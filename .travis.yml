@@ -13,9 +13,11 @@ before_script:
 
 script:
   - docker --version
+  - cd project
   - docker-compose -f docker-compose-build.yaml build --parallel
   - docker tag udagram-api-feed dilllip/udagram-api-feed:latest
 
 after_success:
+  - cd project
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push dilllip/udagram-api-feed:latest
