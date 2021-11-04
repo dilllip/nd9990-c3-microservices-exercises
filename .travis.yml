@@ -27,3 +27,7 @@ after_success:
   - docker push dilllip/udagram-api-user:latest
   - docker push dilllip/udagram-api-feed:latest
   - docker push dilllip/udagram-frontend:latest
+
+branches:
+  only:
+  - master
