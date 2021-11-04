@@ -13,9 +13,17 @@ before_script:
 
 script:
   - docker --version
+  - cd project
   - docker-compose -f docker-compose-build.yaml build --parallel
+  - docker tag reverseproxy dilllip/reverseproxy:latest
+  - docker tag udagram-api-user dilllip/udagram-api-user:latest
   - docker tag udagram-api-feed dilllip/udagram-api-feed:latest
+  - docker tag udagram-frontend dilllip/udagram-frontend:latest
 
 after_success:
+  - cd project
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push dilllip/reverseproxy:latest
+  - docker push dilllip/udagram-api-user:latest
   - docker push dilllip/udagram-api-feed:latest
+  - docker push dilllip/udagram-frontend:latest
