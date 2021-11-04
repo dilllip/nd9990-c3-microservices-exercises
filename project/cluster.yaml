@@ -1,0 +1,21 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: udagram-4-nov-dev
+  region: us-east-2
+  version: "1.21"
+
+managedNodeGroups:
+  - name: udagram-mngd-node-group
+    instanceType: m5.large
+    minSize: 2
+    maxSize: 3
+    ssh:
+      allow: true
+
+vpc:
+  cidr: 10.0.0.0/16
+  autoAllocateIPv6: false
+  clusterEndpoints:
+    publicAccess: true
