@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reverseproxy-deployment
+  name: reverseproxy
   labels:
     service: reverseproxy
 spec:
@@ -14,6 +14,7 @@ spec:
       labels:
         service: reverseproxy
     spec:
+      restartPolicy: Always
       containers:
         - image: dilllip/reverseproxy
           name: reverseproxy
@@ -23,8 +24,7 @@ spec:
               memory: "64Mi"
               cpu: "250m"
             limits:
-              memory: "1024Mi"
+              memory: "2048Mi"
               cpu: "500m"
           ports:
             - containerPort: 8080
-#      restartPolicy: Always
