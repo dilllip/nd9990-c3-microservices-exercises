@@ -1,10 +1,10 @@
 apiVersion: v1
 data:
-  URL: "http://localhost:8100"
-  POSTGRES_HOST: udagram-dev.couvcuulmkd2.us-east-1.rds.amazonaws.com
+  URL: YOUR_URL
+  POSTGRES_HOST: YOUR_AWS_POSTGRES_HOST
   POSTGRES_DB: postgres
   AWS_REGION: us-east-2
-  AWS_BUCKET: dilllip-udagram-dev
+  AWS_BUCKET: YOUR_AWS_BUCKET
   AWS_PROFILE: udagram-admin
 kind: ConfigMap
 metadata:
